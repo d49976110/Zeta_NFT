@@ -169,19 +169,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "checkBalance",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "flipSaleActive",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -208,7 +195,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "getRest",
+				"name": "getRestSupply",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -221,11 +208,29 @@
 			},
 			{
 				"inputs": [],
+				"name": "getSaleActive",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getTime",
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "_startTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_endTime",
 						"type": "uint256"
 					}
 				],
@@ -325,6 +330,13 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -591,6 +603,13 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "unpause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -797,11 +816,11 @@
 			]
 		},
 		"Zeta.sol": {
-			"keccak256": "0x2f5c914dde8925406998609b33d169a29ab955dcc6c9c58ae29a9a93acb0912b",
+			"keccak256": "0x357467107f765608c5a6ee46fffa1cc1f1e7225ab4f05acb0cd5b8e56530ecd7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://281a7b54baeab7163616d16be7bf4ce42bf90be0ab4c4a924b4387074dcc224c",
-				"dweb:/ipfs/QmfJRsD3b1YaG5vshss7fZeqnwfVyrjkr6SVumLhWTYWRK"
+				"bzz-raw://bfe0a8c9c6e389b2eeb3447a91c02499caaf2b687d0b3f963c724942474da487",
+				"dweb:/ipfs/QmVWfiLp71fwhmRWBWa7yLcCHHJq1Ce5CSCRvSnunJ2XFB"
 			]
 		}
 	},

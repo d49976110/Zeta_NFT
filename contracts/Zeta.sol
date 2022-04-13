@@ -8,9 +8,9 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 contract Zeta is ERC721Enumerable,Ownable,Pausable {
     using Strings for uint256;
 
-    //period
-    uint256 start_time ; 
-    uint256 end_time ;  
+    //period 2022/5/1 ~ 2022/5/7
+    uint256 start_time = 1651334400 ; 
+    uint256 end_time = 1651939199 ;  
 
     //active selling & reveal
     bool _isSaleActive = false;
