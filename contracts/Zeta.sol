@@ -24,7 +24,6 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
     string baseExtension = ".json";
 
     constructor()ERC721("ZETA_Souvenir", "ZETA"){
-        // _mint(40);
     }
 
     //only owner
@@ -36,7 +35,6 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
         start_time = _startTime ; 
         end_time = _endTime ; 
     }
-
 
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
