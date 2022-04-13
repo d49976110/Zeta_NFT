@@ -208,6 +208,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getRest",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getTime",
 				"outputs": [
 					{
@@ -217,6 +230,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_uint",
+						"type": "uint256"
+					}
+				],
+				"name": "init_mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -771,11 +797,11 @@
 			]
 		},
 		"Zeta.sol": {
-			"keccak256": "0xfbc07d4fac089b26e6a5a7fb57dc067c6f8f18858d6ba5928f85f1cc883ab3be",
+			"keccak256": "0x2f5c914dde8925406998609b33d169a29ab955dcc6c9c58ae29a9a93acb0912b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f3eb70059f0eaa80c4b1b7b3a8b5167fbc22ae466c386428ff760df2262d9a90",
-				"dweb:/ipfs/QmZ7gBEVzUpGvbY9BZYp17ewLbCU28CTutqAAHUfHCddP3"
+				"bzz-raw://281a7b54baeab7163616d16be7bf4ce42bf90be0ab4c4a924b4387074dcc224c",
+				"dweb:/ipfs/QmfJRsD3b1YaG5vshss7fZeqnwfVyrjkr6SVumLhWTYWRK"
 			]
 		}
 	},

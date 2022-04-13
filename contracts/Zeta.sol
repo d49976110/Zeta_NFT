@@ -26,7 +26,7 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
     constructor()ERC721("ZETA_Souvenir", "ZETA"){
     }
 
-    //only owner
+    //owner control
     function flipSaleActive() external onlyOwner {
         _isSaleActive = !_isSaleActive;
     }
@@ -34,6 +34,37 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
     function setTime(uint _startTime , uint _endTime) external onlyOwner{
         start_time = _startTime ; 
         end_time = _endTime ; 
+    }
+
+    function pause() external onlyOwner(){
+        _pause();
+    }
+
+    function unpause() external onlyOwner(){
+        _unpause();
+    }
+
+    function init_mint(uint _uint) external onlyOwner{
+        _mint(_uint);
+    }
+
+    function withdrawBalance(uint256 amount) external onlyOwner{
+        address owner = owner();
+        payable(owner).transfer(amount);
+    }
+
+    //info
+    function getTime() external view returns(uint _startTime , uint _endTime){
+        return (start_time , end_time) ; 
+    }
+
+    function getSaleActive() external view returns(bool){
+        return _isSaleActive ; 
+    }
+
+    function getRestSupply() external view returns(uint){
+        uint256 recentSupply = totalSupply();
+        return max_supply - recentSupply ; 
     }
 
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
@@ -51,8 +82,9 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
         baseURI = _newBaseURI;
     }
 
+    //mint
     function mint(uint256 tokenQuantity) external payable whenNotPaused{
-        require(block.timestamp >= start_time && block.timestamp <= end_time , "Not in the mint period ");
+        require(block.timestamp >= start_time && block.timestamp <= end_time , "Not in the mint period");
         require(
             totalSupply() + tokenQuantity <= max_supply,
             "Already achieve max supply"
@@ -75,25 +107,9 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
         }
     }
 
-    function init_mint(uint _uint) external onlyOwner{
-        _mint(_uint);
-    }
+    
 
-    function withdrawBalance(uint256 amount) external onlyOwner{
-        address owner = owner();
-        payable(owner).transfer(amount);
-    }
+    
 
-    function checkBalance() external view returns(uint) {
-        return address(this).balance;
-    }
-
-    function getTime() external view returns(uint){
-        return block.timestamp ; 
-    }
-
-    function getRest() external view returns(uint){
-        uint256 recentSupply = totalSupply();
-        return max_supply - recentSupply ; 
-    }
+    
 }
