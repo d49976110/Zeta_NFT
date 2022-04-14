@@ -13,8 +13,9 @@ contract('Zeta', (accounts) => {
   });
 
   it('init mint', async () => {
-    await ZetaInstance.init_mint(60, {from: accounts[0], gas: 6712388});
     await ZetaInstance.init_mint(39, {from: accounts[0], gas: 6712388});
+    await ZetaInstance.init_mint(30, {from: accounts[0], gas: 6712388});
+    await ZetaInstance.init_mint(30, {from: accounts[0], gas: 6712388});
     const result = await ZetaInstance.balanceOf(accounts[0]);
     assert.equal(result.toString(), 99, 'first should be 99');
   });
@@ -22,6 +23,20 @@ contract('Zeta', (accounts) => {
   it('rest supply', async () => {
     const result = await ZetaInstance.getRestSupply();
     assert.equal(result, 900);
+  });
+
+  it('before add white list', async () => {
+    try {
+      await ZetaInstance.mint(1, {from: accounts[1], value: 0.001 * 10 ** 18});
+    } catch (err) {
+      assert.equal(err.reason, 'Not in the white list');
+    }
+  });
+
+  it('add to white list', async () => {
+    await ZetaInstance.addToWhitelist([accounts[1]], {from: accounts[0]});
+    const result = await ZetaInstance.checkWhiteList(accounts[1]);
+    assert.equal(result, true);
   });
 
   it('before setTime should not mint', async () => {

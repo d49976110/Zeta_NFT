@@ -22,11 +22,20 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
     string baseURI;
     string notRevealedUri;
     string baseExtension = ".json";
+    uint256 total_supply = 0 ;
+
+    mapping(address=>bool) whiteList ; 
 
     constructor()ERC721("ZETA_Souvenir", "ZETA"){
     }
 
     //owner control
+    function addToWhitelist(address[] calldata users) external onlyOwner {
+        for (uint256 i = 0; i < users.length; i++) {
+            whiteList[users[i]] = true;
+        }
+    }
+
     function flipSaleActive() external onlyOwner {
         _isSaleActive = !_isSaleActive;
     }
@@ -54,6 +63,10 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
     }
 
     //info
+    function checkWhiteList(address _address) external view returns(bool){
+        return whiteList[_address];
+    }
+
     function getTime() external view returns(uint _startTime , uint _endTime){
         return (start_time , end_time) ; 
     }
@@ -63,7 +76,7 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
     }
 
     function getRestSupply() external view returns(uint){
-        uint256 recentSupply = totalSupply();
+        uint256 recentSupply = total_supply;
         return max_supply - recentSupply ; 
     }
 
@@ -84,9 +97,10 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
 
     //mint
     function mint(uint256 tokenQuantity) external payable whenNotPaused{
+        require(whiteList[msg.sender] == true , "Not in the white list");
         require(block.timestamp >= start_time && block.timestamp <= end_time , "Not in the mint period");
         require(
-            totalSupply() + tokenQuantity <= max_supply,
+            total_supply + tokenQuantity <= max_supply,
             "Already achieve max supply"
         );
         require(_isSaleActive, "Sale must be active to mint");
@@ -100,9 +114,10 @@ contract Zeta is ERC721Enumerable,Ownable,Pausable {
 
     function _mint(uint256 tokenQuantity) internal {
         for (uint256 i = 0; i < tokenQuantity; i++) {
-            uint256 mintIndex = totalSupply();
-            if (totalSupply() < max_supply) {
+            uint256 mintIndex = total_supply;
+            if (total_supply < max_supply) {
                 _safeMint(msg.sender, mintIndex);
+                total_supply ++ ; 
             }
         }
     }

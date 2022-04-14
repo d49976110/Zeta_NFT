@@ -133,6 +133,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address[]",
+						"name": "users",
+						"type": "address[]"
+					}
+				],
+				"name": "addToWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "to",
 						"type": "address"
@@ -162,6 +175,25 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					}
+				],
+				"name": "checkWhiteList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -697,7 +729,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Zeta.sol": "Zeta"
+			"Zeta_count.sol": "Zeta"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -815,12 +847,12 @@
 				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
 			]
 		},
-		"Zeta.sol": {
-			"keccak256": "0x357467107f765608c5a6ee46fffa1cc1f1e7225ab4f05acb0cd5b8e56530ecd7",
+		"Zeta_count.sol": {
+			"keccak256": "0x4b492e55bdc28e23f6d70c70807fbc3153e9bc4b735b9953dff9f235b73763cc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bfe0a8c9c6e389b2eeb3447a91c02499caaf2b687d0b3f963c724942474da487",
-				"dweb:/ipfs/QmVWfiLp71fwhmRWBWa7yLcCHHJq1Ce5CSCRvSnunJ2XFB"
+				"bzz-raw://33dfd9f31d143fe2acf61ed5310da8850732e31457465b1bce222687d64098ee",
+				"dweb:/ipfs/QmWwFsqa2oJ7CKjHL5iTotoP2DsgWDUBmg5f2iUPz9V5x3"
 			]
 		}
 	},
